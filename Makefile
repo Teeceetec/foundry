@@ -58,5 +58,16 @@ deploy-sepolia:
 fund:
 	@forge script script/Interactions.s.sol:FundFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
 
+
 withdraw:
 	@forge script script/Interactions.s.sol:WithdrawFundMe --sender $(SENDER_ADDRESS) $(NETWORK_ARGS)
+
+
+	devtools: 
+	forge install Cyfrin/foundry-devops --no-commit
+
+	removebranch:
+	git rm -rf lib/forge-std
+
+	forgestd:
+	 forge install foundry-rs/forge-std@v1.7.0 --no-commit
